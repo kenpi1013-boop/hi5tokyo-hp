@@ -821,16 +821,35 @@
     }
 
     @media (max-width: 600px) {
-      section { padding: 3.5rem 0; }
+      /* 全体の余白を狭く */
+      .container, .container-wide { padding: 0 1rem; }
+      section { padding: 3rem 0; }
+
+      /* ヒーロー */
+      .hero-inner { padding: 5rem 0 3rem; max-width: 100%; margin-left: 0; }
+      .hero-title { font-size: clamp(1.6rem, 7vw, 2.4rem); white-space: normal; }
+      .hero-en { font-size: clamp(1rem, 5vw, 1.4rem); }
+      .hero-sub { font-size: clamp(1rem, 4.5vw, 1.3rem); }
+      .hero-vm { flex-direction: column; }
+      .hero-vm-card { min-width: unset; width: 100%; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+
+      /* グリッド */
       .b5-grid { grid-template-columns: 1fr; }
       .vision-cards { grid-template-columns: 1fr; }
       .photo-grid { grid-template-columns: 1fr; }
       .act-grid { grid-template-columns: 1fr; }
       .partner-type-grid { grid-template-columns: 1fr; }
-      .hero-stats { width: 100%; }
-      .hs { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
-      .hs:last-child { border-bottom: none !important; }
+      .rep-grid { grid-template-columns: 1fr; }
+
+      /* 創設者 */
+      .founder-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .founder-card { padding: 1.5rem; }
+
+      /* フッター */
       .footer-inner { flex-direction: column; text-align: center; }
+      .footer-nav { justify-content: center; }
     }
   </style>
 </head>
@@ -840,7 +859,7 @@
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="#hero" class="logo">Hi<span>5</span> Tokyo</a>
+      <a href="#hero" class="logo">Hi<span>5</span>Tokyo</a>
       <ul class="nav-links">
         <li><a href="#vision">ビジョン</a></li>
         <li><a href="#founder">創設者</a></li>
@@ -1326,7 +1345,7 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-logo">Hi<span>5</span> Tokyo</div>
+      <div class="footer-logo">Hi<span>5</span>Tokyo</div>
       <nav class="footer-nav" aria-label="フッターナビ">
         <a href="#vision">ビジョン</a>
         <a href="#founder">創設者</a>
