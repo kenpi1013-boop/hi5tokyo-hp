@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hi5 Tokyo | Baseball5チーム。ハイタッチで明るく楽しく、Hi5の輪をつなぐ。東京・品川を拠点に活動するBaseball5チームの公式サイト。">
-  <title>Hi5 Tokyo | Baseball5チーム</title>
+  <meta name="description" content="Hi5Tokyo | Baseball5チーム。ハイタッチで明るく楽しく、Hi5の輪をつなぐ。東京・品川を拠点に活動するBaseball5チームの公式サイト。">
+  <title>Hi5Tokyo | Baseball5チーム</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -217,7 +217,10 @@
       background-size: cover;
       background-position: center 25%;
     }
-    .hero-overlay { display: none; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
 
     /* Vision/Mission cards */
     .hero-vm {
@@ -284,10 +287,17 @@
     .hero-en {
       display: block;
       font-family: 'Oswald', sans-serif;
-      font-size: clamp(0.95rem, 2.5vw, 1.45rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
       color: var(--pink-lt);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.08em;
       margin-bottom: 0.3rem;
+    }
+    .hero-team {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.12em;
+      margin-bottom: 1.75rem;
+      font-weight: 500;
     }
     .hero-sub {
       font-size: clamp(1.1rem, 2.8vw, 1.75rem);
@@ -871,10 +881,11 @@
   <div class="container">
     <div class="hero-inner">
       <h1 class="hero-title">
-        <span class="hero-en">HI5 TOKYO</span>
+        <span class="hero-en">Hi5Tokyo</span>
         ハイタッチで明るく楽しく
       </h1>
       <p class="hero-sub">「Hi5の輪をつなぐ」</p>
+      <p class="hero-team">東京発 Baseball5チーム</p>
       <div class="hero-vm">
         <div class="hero-vm-card">
           <div class="hero-vm-label">Vision</div>
@@ -887,7 +898,7 @@
       </div>
       <div class="hero-btns">
         <a href="#practice" class="btn btn-pink">チームに参加する</a>
-        <a href="#partner"  class="btn btn-outline">パートナーになる</a>
+        <a href="#partner"  class="btn btn-gold">パートナーになる</a>
       </div>
     </div>
   </div>
@@ -1140,7 +1151,7 @@
             @hi5tokyo — Instagram
           </a>
           <a href="https://www.youtube.com/@hi5tokyo" target="_blank" rel="noopener" class="sns-link">
-            Hi5 Tokyo — YouTube
+            Hi5Tokyo — YouTube
           </a>
         </div>
         <a href="#contact" class="btn btn-pink" style="width:100%; justify-content:center;">見学・体験を申し込む</a>
@@ -1326,7 +1337,7 @@
         <a href="#partner">パートナー</a>
         <a href="#contact">お問い合わせ</a>
       </nav>
-      <div class="footer-copy">&copy; 2025 Hi5 Tokyo. All rights reserved.</div>
+      <div class="footer-copy">&copy; 2025 Hi5Tokyo. All rights reserved.</div>
     </div>
   </div>
 </footer>
