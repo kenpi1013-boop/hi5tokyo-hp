@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hi5 Tokyo | Baseball5チーム。ハイタッチで明るく楽しく、Hi5の輪をつなぐ。東京・品川を拠点に活動するBaseball5チームの公式サイト。">
+  <title>Hi5 Tokyo | Baseball5チーム</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & VARIABLES
+    ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:       #E0508A;
+      --pink-lt:    #F07AB0;
+      --pink-dk:    #C0387A;
+      --pink-bg:    #FFF0F7;
+      --pink-bg2:   #FFE4F1;
+      --pink-dim:   rgba(224,80,138,0.10);
+      --pink-bdr:   rgba(224,80,138,0.22);
+      --gold:       #C9A44A;
+      --gold-lt:    #E2C06A;
+      --gold-dim:   rgba(201,164,74,0.12);
+      --gold-bdr:   rgba(201,164,74,0.30);
+      --text:       #1A1020;
+      --text-2:     #4E4058;
+      --muted:      #9B8FA5;
+      --white:      #FFFFFF;
+      --bg-alt:     #FDF8FC;
+      --border:     rgba(224,80,138,0.14);
+      --shadow-sm:  0 2px 12px rgba(224,80,138,0.08);
+      --shadow:     0 6px 24px rgba(224,80,138,0.12);
+      --shadow-lg:  0 16px 48px rgba(224,80,138,0.18);
+      --radius:     12px;
+      --radius-lg:  20px;
+      --tr:         0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ========================================
+       LAYOUT
+    ======================================== */
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 2.5rem; }
+    .container-wide { max-width: 1600px; margin: 0 auto; padding: 0 2.5rem; }
+    section { padding: 5.5rem 0; }
+    .bg-alt { background: var(--bg-alt); }
+    .bg-pink { background: var(--pink-bg); }
+
+    /* ========================================
+       TYPOGRAPHY
+    ======================================== */
+    .label {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.6rem;
+    }
+
+    .sec-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.18;
+      color: var(--text);
+      margin-bottom: 0.9rem;
+    }
+
+    .sec-lead {
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+      color: var(--text-2);
+      line-height: 1.9;
+      max-width: 600px;
+    }
+
+    .sec-header { margin-bottom: 3rem; }
+
+    .bar {
+      display: block;
+      width: 32px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--pink-lt));
+      border-radius: 2px;
+      margin: 0.9rem 0 1.5rem;
+    }
+
+    /* ========================================
+       BUTTONS
+    ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.82rem 1.9rem;
+      border-radius: 6px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+      transition: var(--tr);
+    }
+    .btn-pink  { background: var(--pink); color: #fff; }
+    .btn-pink:hover  { background: var(--pink-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,80,138,0.32); }
+    .btn-gold  { background: var(--gold); color: #fff; }
+    .btn-gold:hover  { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,164,74,0.32); }
+    .btn-outline  { background: transparent; color: var(--pink); border: 1.5px solid var(--pink); }
+    .btn-outline:hover { background: var(--pink-dim); transform: translateY(-2px); }
+    .btn-outline-gold { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+    .btn-outline-gold:hover { background: var(--gold-dim); transform: translateY(-2px); }
+    .btn-white { background: #fff; color: var(--pink); }
+    .btn-white:hover { background: var(--pink-bg); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: padding var(--tr);
+    }
+    .nav-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #nav.scrolled .nav-inner { height: 54px; }
+
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+    .logo span { color: var(--pink); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color 0.2s;
+      padding: 0.2rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover { color: var(--pink); border-bottom-color: var(--pink); }
+
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--tr); }
+
+    /* Mobile menu */
+    .mmenu {
+      display: none; position: fixed; inset: 0; background: #fff;
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.25rem;
+    }
+    .mmenu.open { display: flex; }
+    .mmenu a { font-size: 1.3rem; font-weight: 700; color: var(--text); transition: color 0.2s; }
+    .mmenu a:hover { color: var(--pink); }
+    .mmenu-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
+
+    /* ========================================
+       SCROLL FADE
+    ======================================== */
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fi.on { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+
+    /* ========================================
+       HERO  (参考: WBSC 大型ヒーロー)
+    ======================================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .hero-photo {
+      position: absolute; inset: 0;
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center 25%;
+    }
+    .hero-overlay { display: none; }
+
+    /* Vision/Mission cards */
+    .hero-vm {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .hero-vm-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-left: 4px solid var(--pink);
+      border-radius: 10px;
+      padding: 1.1rem 1.5rem;
+      min-width: 240px;
+    }
+    .hero-vm-card.mission { border-left-color: var(--gold); }
+    .hero-vm-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      color: rgba(255,255,255,0.75); margin-bottom: 0.3rem;
+    }
+    .hero-vm-text {
+      font-size: 0.95rem; font-weight: 900;
+      color: #fff; line-height: 1.45;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      padding: 6rem 0 4rem;
+      max-width: 620px;
+      margin-left: auto;
+    }
+
+    /* Desktop 2-column split */
+    .hero-cols {
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(224,80,138,0.18);
+      border: 1px solid rgba(224,80,138,0.4);
+      color: var(--pink-lt);
+      font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 0.38rem 1rem; border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+    .hero-dot { width: 6px; height: 6px; background: var(--pink-lt); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.6)} }
+
+    .hero-title {
+      font-size: clamp(2rem, 4.8vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+      white-space: nowrap;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+    .hero-en {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(0.95rem, 2.5vw, 1.45rem);
+      color: var(--pink-lt);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.3rem;
+    }
+    .hero-sub {
+      font-size: clamp(1.1rem, 2.8vw, 1.75rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .hero-desc {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 720px;
+      line-height: 2;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 2rem; }
+
+    /* Stats panel — 2×2 grid on desktop */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+    }
+    .hs {
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.09);
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+    }
+    .hs:nth-child(2n)    { border-right: none; }
+    .hs:nth-child(3),
+    .hs:nth-child(4)     { border-bottom: none; }
+    .hs-n { font-family: 'Oswald', sans-serif; font-size: 2.6rem; font-weight: 700; color: var(--pink-lt); line-height: 1; margin-bottom: 0.45rem; }
+    .hs-l { font-size: 0.72rem; color: rgba(255,255,255,0.52); }
+
+    /* ========================================
+       VISION  (参考: WBSC 3原則 セクション)
+    ======================================== */
+    #vision { background: var(--pink-bg); padding: 5rem 0; }
+
+    /* Desktop: slogan left / cards right */
+    .vision-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .vision-slogan {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--pink-dk);
+      line-height: 1.3;
+      margin-bottom: 2.5rem;
+    }
+    .vision-slogan small {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.18em;
+      color: var(--pink);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .vision-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .vc {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+    }
+    .vc-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--pink); text-transform: uppercase; margin-bottom: 0.4rem; }
+    .vc-title { font-size: 1.05rem; font-weight: 900; color: var(--text); margin-bottom: 0.35rem; white-space: nowrap; }
+    .vc-body { font-size: 0.82rem; color: var(--text-2); line-height: 1.65; }
+
+    /* ========================================
+       FOUNDER  (参考: Baseball5 JAPAN About)
+    ======================================== */
+    #founder {}
+
+    .founder-layout {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .founder-card {
+      position: sticky; top: 6rem;
+      background: var(--pink-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .founder-photo {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background-image: url('images/founder.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      border: 3px solid var(--pink);
+      margin: 0 auto 1.5rem;
+    }
+
+    .founder-name { font-size: 1.5rem; font-weight: 900; color: var(--text); margin-bottom: 0.2rem; }
+    .founder-name-en { font-family: 'Oswald', sans-serif; font-size: 0.8rem; color: var(--pink); letter-spacing: 0.14em; margin-bottom: 0.5rem; }
+    .founder-role { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .founder-quote {
+      font-size: 0.88rem; font-weight: 700; color: var(--pink-dk);
+      line-height: 1.7;
+      border-left: 3px solid var(--pink);
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border-radius: 0 8px 8px 0;
+      text-align: left;
+    }
+
+    /* Timeline */
+    .timeline { padding-top: 0.25rem; }
+    .tl {
+      display: flex; gap: 1.15rem;
+      margin-bottom: 2.25rem; position: relative;
+    }
+    .tl:not(:last-child)::after {
+      content: ''; position: absolute;
+      left: 18px; top: 40px; bottom: -1.25rem;
+      width: 2px; background: var(--border);
+    }
+    .tl-dot {
+      flex-shrink: 0; width: 38px; height: 38px;
+      border-radius: 50%; background: #fff;
+      border: 2px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .tl.glory .tl-dot  { background: var(--gold); border-color: var(--gold); }
+    .tl.hard  .tl-dot  { background: #d0c0d8; border-color: #d0c0d8; }
+    .tl.reborn .tl-dot { background: var(--pink); border-color: var(--pink); box-shadow: 0 0 0 5px rgba(224,80,138,0.12); }
+
+    .tl-tag  { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.18rem; }
+    .tl.glory .tl-tag  { color: var(--gold); }
+    .tl.hard  .tl-tag  { color: var(--muted); }
+    .tl.reborn .tl-tag { color: var(--pink); }
+    .tl-title { font-size: 1rem; font-weight: 900; color: var(--text); margin-bottom: 0.3rem; }
+    .tl-desc  { font-size: 0.84rem; color: var(--text-2); line-height: 1.78; }
+
+    /* ========================================
+       BASEBALL5  (参考: WBSC 6特徴グリッド)
+    ======================================== */
+    #baseball5 {}
+
+    .b5-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .b5-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--pink);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--tr);
+    }
+    .b5-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-top-color: var(--pink-dk); }
+    .b5-num {
+      font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700;
+      color: var(--pink-bg2); line-height: 1; margin-bottom: 0.75rem;
+      -webkit-text-stroke: 2px var(--pink-bdr);
+    }
+    .b5-title { font-size: 1rem; font-weight: 900; color: var(--text); margin-bottom: 0.5rem; }
+    .b5-desc  { font-size: 0.84rem; color: var(--text-2); line-height: 1.82; }
+
+    .b5-banner {
+      background: linear-gradient(135deg, var(--pink-bg), var(--pink-bg2));
+      border: 1px solid var(--pink-bdr);
+      border-radius: var(--radius); padding: 2rem 2.25rem;
+    }
+    .b5-banner-text { font-size: 0.92rem; color: var(--text); line-height: 1.85; }
+    .b5-banner-text strong { color: var(--pink); font-weight: 900; }
+
+    /* ========================================
+       TEAM  (参考: Baseball5 JAPAN 写真グリッド)
+    ======================================== */
+    #team {}
+
+    /* 写真グリッド — 実写真差し替え時は .tphoto[data-label] の background-image へ */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .tphoto {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--pink-bg2), var(--pink-bg));
+      border: 1px solid var(--border);
+      /* 実写真: background-image: url('images/team1.jpg'); background-size: cover; background-position: center; */
+    }
+    .tphoto::after {
+      content: attr(data-label);
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(224,80,138,0.5));
+      color: #fff; font-size: 0.76rem; font-weight: 700;
+      padding: 1rem 0.75rem 0.5rem;
+    }
+    .tphoto.tall { grid-row: span 2; }
+    .tphoto-inner {
+      width: 100%; padding-bottom: 75%;
+      /* tall用: .tall .tphoto-inner { padding-bottom: 0; height: 100%; } */
+    }
+    .tphoto.tall .tphoto-inner { padding-bottom: 0; min-height: 300px; }
+    .tphoto-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.5rem; color: var(--pink); opacity: 0.5;
+      font-size: 0.78rem; font-weight: 700;
+    }
+    .tphoto-placeholder svg { width: 32px; height: 32px; stroke: var(--pink); fill: none; stroke-width: 1.5; }
+
+    .rep-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .rep-card {
+      background: var(--pink-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--tr);
+    }
+    .rep-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    /* 選手写真プレースホルダー */
+    .rep-photo {
+      width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--pink-bg2), var(--pink-bg));
+      border: 2px solid var(--pink);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--pink);
+      /* 実写真: background-image: url('images/player1.jpg'); background-size: cover; background-position: center; */
+    }
+    .rep-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: var(--pink); color: #fff;
+      font-size: 0.66rem; font-weight: 900; letter-spacing: 0.06em;
+      padding: 0.18rem 0.65rem; border-radius: 100px; margin-bottom: 0.4rem;
+    }
+    .rep-name  { font-size: 1.05rem; font-weight: 900; color: var(--text); margin-bottom: 0.15rem; }
+    .rep-pos   { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .rep-desc  { font-size: 0.82rem; color: var(--text-2); line-height: 1.75; }
+
+    /* ========================================
+       ACTIVITIES
+    ======================================== */
+    #activities {}
+
+    .act-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .act-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--tr);
+    }
+    .act-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .act-num {
+      font-family: 'Oswald', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; color: var(--pink); margin-bottom: 0.85rem;
+    }
+    .act-title { font-size: 1.05rem; font-weight: 900; color: var(--text); margin-bottom: 0.75rem; }
+    .act-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.45rem;
+    }
+    .act-list li {
+      font-size: 0.84rem; color: var(--text-2);
+      padding-left: 1.1em; position: relative; line-height: 1.6;
+    }
+    .act-list li::before {
+      content: '—'; position: absolute; left: 0;
+      color: var(--pink); font-weight: 700;
+    }
+
+    /* ========================================
+       PRACTICE  (Baseball5 JAPAN EXPERIENCE参考)
+    ======================================== */
+    #practice {}
+
+    .practice-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .pcard {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pcard-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.5rem; }
+    .pcard-title { font-size: 1.15rem; font-weight: 900; color: var(--text); margin-bottom: 1.25rem; }
+
+    .info-list { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.75rem; }
+    .info-item {
+      display: flex; gap: 0.75rem;
+      background: var(--pink-bg); border-radius: 8px;
+      padding: 0.8rem 1rem; align-items: flex-start;
+    }
+    .info-key  { font-size: 0.75rem; font-weight: 700; color: var(--pink); min-width: 80px; flex-shrink: 0; padding-top: 0.1rem; }
+    .info-val  { font-size: 0.88rem; color: var(--text); line-height: 1.6; font-weight: 500; }
+
+    .steps { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 1.75rem; }
+    .step  { display: flex; align-items: flex-start; gap: 0.85rem; }
+    .step-n {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--pink); color: #fff;
+      font-size: 0.82rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .step-t { font-size: 0.86rem; color: var(--text-2); line-height: 1.7; padding-top: 0.3rem; }
+    .step-t strong { color: var(--text); }
+
+    .sns-row { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem; }
+    .sns-link {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.7rem 1rem;
+      background: var(--pink-bg); border: 1px solid var(--border);
+      border-radius: 8px; font-size: 0.86rem; font-weight: 500;
+      color: var(--text-2); transition: var(--tr);
+    }
+    .sns-link:hover { color: var(--pink); background: var(--pink-bg2); }
+
+    /* ========================================
+       PARTNER
+    ======================================== */
+    #partner { background: var(--bg-alt); }
+
+    .partner-lead {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+    .merit-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .merit {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .merit-title { font-size: 0.88rem; font-weight: 900; color: var(--text); margin-bottom: 0.15rem; }
+    .merit-desc  { font-size: 0.8rem; color: var(--text-2); line-height: 1.6; }
+
+    .partner-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .ptype-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--pink);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .ptype-card.gold-top { border-top-color: var(--gold); }
+    .ptype-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--pink); margin-bottom: 0.4rem; }
+    .ptype-card.gold-top .ptype-label { color: var(--gold); }
+    .ptype-title { font-size: 1.1rem; font-weight: 900; color: var(--text); margin-bottom: 0.75rem; }
+    .ptype-desc  { font-size: 0.84rem; color: var(--text-2); line-height: 1.82; }
+
+    .partner-cta { text-align: center; }
+    .partner-cta p { font-size: 0.86rem; color: var(--muted); margin-top: 0.75rem; }
+
+    /* ========================================
+       VISION BAND
+    ======================================== */
+    .vision-band {
+      background: linear-gradient(135deg, var(--pink-dk), var(--pink), var(--pink-lt));
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .vb-quote {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.45;
+      max-width: 900px;
+      margin: 0 auto 2.25rem;
+    }
+    .vb-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-outline-white { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.7); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+    /* ========================================
+       CONTACT
+    ======================================== */
+    #contact {}
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info-title { font-size: 1.05rem; font-weight: 900; color: var(--text); margin-bottom: 0.5rem; }
+    .contact-info-body  { font-size: 0.85rem; color: var(--text-2); line-height: 1.9; margin-bottom: 2rem; }
+
+    .clinks { display: flex; flex-direction: column; gap: 0.75rem; }
+    .clink  {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.85rem; color: var(--text-2); transition: color 0.2s;
+    }
+    .clink:hover { color: var(--pink); }
+
+    .cform { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { display: flex; flex-direction: column; gap: 0.32rem; }
+    .flabel { font-size: 0.76rem; font-weight: 700; color: var(--text-2); }
+    .finput, .fsel, .ftxt {
+      background: var(--bg-alt);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.85rem;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .finput:focus, .fsel:focus, .ftxt:focus {
+      outline: none;
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(224,80,138,0.1);
+    }
+    .fsel { cursor: pointer; }
+    .fsel option { background: #fff; color: var(--text); }
+    .ftxt { resize: vertical; min-height: 110px; }
+    .form-success {
+      display: none; padding: 0.75rem 1rem;
+      background: var(--pink-bg2); border: 1px solid var(--pink-bdr);
+      border-radius: 8px; color: var(--pink-dk);
+      font-size: 0.86rem; font-weight: 700;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    footer {
+      background: var(--text);
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.25rem;
+    }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .footer-logo span { color: var(--pink-lt); }
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-nav a { font-size: 0.78rem; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--pink-lt); }
+    .footer-copy { font-size: 0.74rem; color: rgba(255,255,255,0.28); }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 960px) {
+      .nav-links, .nav-right .btn { display: none; }
+      .hamburger { display: flex; }
+
+      .vision-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .founder-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .founder-card { position: static; }
+
+      .b5-grid { grid-template-columns: 1fr 1fr; }
+
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .tphoto.tall { grid-row: auto; }
+
+      .act-grid { grid-template-columns: repeat(2, 1fr); }
+      .partner-lead { grid-template-columns: 1fr; }
+      .partner-type-grid { grid-template-columns: 1fr 1fr; }
+      .rep-grid { grid-template-columns: 1fr; }
+
+      .practice-layout { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 0; }
+      .b5-grid { grid-template-columns: 1fr; }
+      .vision-cards { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .act-grid { grid-template-columns: 1fr; }
+      .partner-type-grid { grid-template-columns: 1fr; }
+      .hero-stats { width: 100%; }
+      .hs { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
+      .hs:last-child { border-bottom: none !important; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======== NAVIGATION ======== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="logo">Hi<span>5</span> Tokyo</a>
+      <ul class="nav-links">
+        <li><a href="#vision">ビジョン</a></li>
+        <li><a href="#founder">創設者</a></li>
+        <li><a href="#baseball5">Baseball5</a></li>
+        <li><a href="#team">チーム</a></li>
+        <li><a href="#activities">活動内容</a></li>
+        <li><a href="#practice">練習参加</a></li>
+        <li><a href="#partner">パートナー</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#contact" class="btn btn-pink">お問い合わせ</a>
+        <button class="hamburger" id="ham" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu">
+  <button class="mmenu-close" id="mmenu-close">&#x2715;</button>
+  <a href="#vision"     class="mlink">ビジョン</a>
+  <a href="#founder"    class="mlink">創設者</a>
+  <a href="#baseball5"  class="mlink">Baseball5</a>
+  <a href="#team"       class="mlink">チーム</a>
+  <a href="#activities" class="mlink">活動内容</a>
+  <a href="#practice"   class="mlink">練習参加</a>
+  <a href="#partner"    class="mlink">パートナー</a>
+  <a href="#contact" class="btn btn-pink">お問い合わせ</a>
+</div>
+
+<!-- ======== HERO ======== -->
+<section id="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-deco"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        <span class="hero-en">HI5 TOKYO</span>
+        ハイタッチで明るく楽しく
+      </h1>
+      <p class="hero-sub">「Hi5の輪をつなぐ」</p>
+      <div class="hero-vm">
+        <div class="hero-vm-card">
+          <div class="hero-vm-label">Vision</div>
+          <div class="hero-vm-text">挑戦する喜びを、すべての人へ</div>
+        </div>
+        <div class="hero-vm-card mission">
+          <div class="hero-vm-label">Mission</div>
+          <div class="hero-vm-text">誰もが輝けるフィールドを創る</div>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#practice" class="btn btn-pink">チームに参加する</a>
+        <a href="#partner"  class="btn btn-outline">パートナーになる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOUNDER ======== -->
+<section id="founder">
+  <div class="container">
+    <div class="founder-layout">
+      <div class="founder-card fi">
+        <div class="founder-photo"></div>
+        <div class="founder-name">吉永 健太朗</div>
+        <div class="founder-name-en">KENTARO YOSHINAGA</div>
+        <div class="founder-role">Hi5Tokyo 代表 / Baseball5選手</div>
+        <div class="founder-quote">「挫折の先に、本当のフィールドがあった」</div>
+      </div>
+
+      <div class="fi d1">
+        <span class="label">Founder's Story</span>
+        <h2 class="sec-title">創設者<br>吉永健太朗</h2>
+        <span class="bar"></span>
+        <p class="sec-lead" style="margin-bottom:2.5rem;">甲子園制覇から日本代表まで。栄光と挫折を経て、Baseball5という新たなフィールドで「誰もが輝ける場所」をつくる。</p>
+
+        <div class="timeline">
+          <div class="tl glory fi d1">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-tag">高校 — 栄光</div>
+              <div class="tl-title">甲子園 全国制覇</div>
+              <div class="tl-desc">日大三高として甲子園に出場し全国制覇を達成。高校野球の頂点に立つ。</div>
+            </div>
+          </div>
+          <div class="tl glory fi d2">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-tag">大学 — 栄光</div>
+              <div class="tl-title">大学選手権優勝 &amp; MVP</div>
+              <div class="tl-desc">早稲田大学で大学野球選手権に出場し日本一を達成。MVPも同時受賞。</div>
+            </div>
+          </div>
+          <div class="tl glory fi d3">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-tag">日本代表 — 栄光</div>
+              <div class="tl-title">アジアチャンピオン</div>
+              <div class="tl-desc">日本代表としてアジア選手権に出場し優勝。世界を舞台に戦う経験を積む。</div>
+            </div>
+          </div>
+          <div class="tl hard fi d1">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-tag">社会人 — 転機</div>
+              <div class="tl-title">イップス・怪我との戦い、挫折</div>
+              <div class="tl-desc">思うように野球ができない日々が続く。挫折の連続の中で「目標が生きる活力になる」「セカンドキャリアの重要性」に気づく。</div>
+            </div>
+          </div>
+          <div class="tl reborn fi d2">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-tag">現在 — 再生</div>
+              <div class="tl-title">Baseball5との出会い、Hi5Tokyo設立</div>
+              <div class="tl-desc">Baseball5に出会い、本気で勝負する楽しさや生きがいを再発見。挫折を乗り越えた先に見えた景色を社会に届けるため、Hi5Tokyoを設立。誰もが輝けるフィールドを創る。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== BASEBALL5 ======== -->
+<section id="baseball5" class="bg-alt">
+  <div class="container">
+    <div class="sec-header fi">
+      <span class="label">About Baseball5</span>
+      <h2 class="sec-title">Baseball5とは</h2>
+      <span class="bar"></span>
+      <p class="sec-lead">WBSC（世界野球ソフトボール連盟）が公式認定した、全く新しい都市型野球スポーツ。必要なのは、ボール1つだけ。</p>
+    </div>
+    <div class="b5-grid">
+      <div class="b5-card fi d1">
+        <div class="b5-num">01</div>
+        <div class="b5-title">手打ち野球の進化版</div>
+        <div class="b5-desc">ボールを手で打つ新しい野球。グローブやバットは不要。WBSC公式認定の新競技として世界中に急速普及中。</div>
+      </div>
+      <div class="b5-card fi d2">
+        <div class="b5-num">02</div>
+        <div class="b5-title">場所を選ばない</div>
+        <div class="b5-desc">塁間13mのため、体育館・会議室・公園など、どこでもプレー可能。狭いスペースでも5対5で白熱した試合が楽しめる。</div>
+      </div>
+      <div class="b5-card fi d3">
+        <div class="b5-num">03</div>
+        <div class="b5-title">D&amp;I の象徴</div>
+        <div class="b5-desc">チームには男女両方の参加が必須。性別を超えた真のチームスポーツとして世界が注目。年齢・障がいの有無を問わず参加可能。</div>
+      </div>
+    </div>
+    <div class="b5-banner fi">
+      <div class="b5-banner-text">
+        <strong>Baseball5は「次世代オリンピック競技」の最有力候補。</strong><br>
+        今この競技のパイオニアとして活動するHi5Tokyoへの支援は、スポーツの歴史に名を刻む先行者利益につながります。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TEAM ======== -->
+<section id="team">
+  <div class="container">
+    <div class="sec-header fi">
+      <span class="label">Team</span>
+      <h2 class="sec-title">チーム紹介</h2>
+      <span class="bar"></span>
+      <p class="sec-lead">甲子園優勝投手からボディビルダーまで。多様なバックグラウンドを持つメンバーが、同じフィールドで本気で挑戦する。</p>
+    </div>
+
+    <!-- 写真グリッド: 実写真はtphotoのstyleにbackground-imageを追加して差し替え -->
+    <div class="photo-grid fi">
+      <div class="tphoto tall" data-label="練習風景">
+        <div class="tphoto-inner"></div>
+        <div class="tphoto-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          写真をここに掲載
+        </div>
+      </div>
+      <div class="tphoto" data-label="試合の様子">
+        <div class="tphoto-inner"></div>
+        <div class="tphoto-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          写真をここに掲載
+        </div>
+      </div>
+      <div class="tphoto" data-label="チーム全体">
+        <div class="tphoto-inner"></div>
+        <div class="tphoto-placeholder">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+          写真をここに掲載
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.05rem; font-weight:900; color:var(--text); margin-bottom:1.25rem;" class="fi">日本代表選手</h3>
+    <div class="rep-grid">
+      <!-- 選手1 — 名前・写真・詳細は後から差し替え -->
+      <div class="rep-card fi d1">
+        <div class="rep-photo">A</div><!-- 実写真: style="background-image:url('images/player1.jpg');background-size:cover;" -->
+        <div>
+          <div class="rep-badge">日本代表</div>
+          <div class="rep-name">選手名（準備中）</div>
+          <div class="rep-pos">ポジション</div>
+          <div class="rep-desc">日本代表として活躍するHi5Tokyoのエース。写真・プロフィールは近日公開予定。</div>
+        </div>
+      </div>
+      <!-- 選手2 -->
+      <div class="rep-card fi d2">
+        <div class="rep-photo">B</div>
+        <div>
+          <div class="rep-badge">日本代表</div>
+          <div class="rep-name">選手名（準備中）</div>
+          <div class="rep-pos">ポジション</div>
+          <div class="rep-desc">Hi5Tokyoのディフェンスを支える日本代表選手。写真・プロフィールは近日公開予定。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ACTIVITIES ======== -->
+<section id="activities" class="bg-pink">
+  <div class="container">
+    <div class="sec-header fi">
+      <span class="label">Activities</span>
+      <h2 class="sec-title">活動内容</h2>
+      <span class="bar"></span>
+      <p class="sec-lead">競技・普及・ウェルネスの3軸で、Baseball5の輪を広げる。</p>
+    </div>
+    <div class="act-grid">
+      <div class="act-card fi d1">
+        <div class="act-num">ACTIVITY 01</div>
+        <div class="act-title">競技力向上</div>
+        <ul class="act-list">
+          <li>日本代表選手 2名在籍</li>
+          <li>大会・練習を継続実施</li>
+          <li>日本一を本気で目指す</li>
+        </ul>
+      </div>
+      <div class="act-card fi d2">
+        <div class="act-num">ACTIVITY 02</div>
+        <div class="act-title">Hi5プロジェクト</div>
+        <ul class="act-list">
+          <li>全国系列チームを拡大</li>
+          <li>高知・岩手に展開済み</li>
+          <li>全国ネットワーク構築中</li>
+        </ul>
+      </div>
+      <div class="act-card fi d3">
+        <div class="act-num">ACTIVITY 03</div>
+        <div class="act-title">大会企画・開催</div>
+        <ul class="act-list">
+          <li>マスターズ大会（40歳以上）</li>
+          <li>学生向け大会も開催</li>
+          <li>2027年6月 開催予定</li>
+        </ul>
+      </div>
+      <div class="act-card fi d4">
+        <div class="act-num">ACTIVITY 04</div>
+        <div class="act-title">ウェルネスプログラム</div>
+        <ul class="act-list">
+          <li>道具不要・会議室で実施可能</li>
+          <li>健康経営優良法人の認定対応</li>
+          <li>吉永による直接指導付き</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PRACTICE ======== -->
+<section id="practice">
+  <div class="container">
+    <div class="sec-header fi">
+      <span class="label">Join Practice</span>
+      <h2 class="sec-title">練習に参加する</h2>
+      <span class="bar"></span>
+      <p class="sec-lead">経験不問・道具不要・男女問わず。まずは体験から。</p>
+    </div>
+    <div class="practice-layout">
+      <div class="pcard fi d1">
+        <div class="pcard-label">Schedule &amp; Place</div>
+        <div class="pcard-title">練習情報</div>
+        <div class="info-list">
+          <div class="info-item">
+            <span class="info-key">練習頻度</span>
+            <span class="info-val">週1回</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">練習場所</span>
+            <span class="info-val">品川区または文京区の体育館</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">参加資格</span>
+            <span class="info-val">誰でも歓迎（経験不問・男女問わず）</span>
+          </div>
+          <div class="info-item">
+            <span class="info-key">持ち物</span>
+            <span class="info-val">動きやすい服装のみ。道具は一切不要。</span>
+          </div>
+        </div>
+        <div class="sns-row">
+          <a href="https://www.instagram.com/hi5tokyo" target="_blank" rel="noopener" class="sns-link">
+            @hi5tokyo — Instagram
+          </a>
+          <a href="https://www.youtube.com/@hi5tokyo" target="_blank" rel="noopener" class="sns-link">
+            Hi5 Tokyo — YouTube
+          </a>
+        </div>
+        <a href="#contact" class="btn btn-pink" style="width:100%; justify-content:center;">見学・体験を申し込む</a>
+      </div>
+      <div class="pcard fi d2">
+        <div class="pcard-label">How to Join</div>
+        <div class="pcard-title">参加の流れ</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-t"><strong>お問い合わせ</strong><br>HPのお問い合わせフォームまたはInstagram DM（@hi5tokyo）でご連絡ください。</div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-t"><strong>体験練習に参加</strong><br>動きやすい服装でお越しください。道具は一切不要です。初めての方も安心してご参加いただけます。</div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-t"><strong>入団</strong><br>雰囲気が気に入ったらそのまま入団！一緒にBaseball5を楽しみましょう。</div>
+          </div>
+        </div>
+        <div style="background:var(--pink-bg); border:1px solid var(--pink-bdr); border-radius:10px; padding:1.25rem; font-size:0.84rem; color:var(--text-2); line-height:1.8;">
+          <strong style="color:var(--pink-dk);">練習日程の最新情報はInstagramで発信しています。</strong><br>
+          日程変更・追加がある場合があります。参加前にInstagramをご確認いただくか、お問い合わせください。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PARTNER ======== -->
+<section id="partner">
+  <div class="container">
+    <div class="sec-header fi">
+      <span class="label">Partner</span>
+      <h2 class="sec-title">チームパートナー<br>募集中</h2>
+      <span class="bar"></span>
+      <p class="sec-lead">Hi5Tokyoと共に歩むパートナーを募集しています。スポーツを通じた社会貢献・ブランディング・健康経営の実現をサポートします。</p>
+    </div>
+
+    <div class="partner-lead">
+      <div class="fi">
+        <h3 style="font-size:1rem; font-weight:900; color:var(--text); margin-bottom:1.1rem;">パートナーになるメリット</h3>
+        <div class="merit-list">
+          <div class="merit">
+            <div>
+              <div class="merit-title">企業ロゴ掲載</div>
+              <div class="merit-desc">ユニフォーム・SNS・HP・大会会場への企業名・ロゴ掲載。YouTube約8,300人／Instagram約1.1万人に直接リーチ。</div>
+            </div>
+          </div>
+          <div class="merit">
+            <div>
+              <div class="merit-title">社内体験会・大会の開催</div>
+              <div class="merit-desc">Baseball5を活用した社内レクリエーション・健康促進イベントを開催。チームビルディングに最適。</div>
+            </div>
+          </div>
+          <div class="merit">
+            <div>
+              <div class="merit-title">吉永健太朗による社内講演</div>
+              <div class="merit-desc">甲子園全国制覇・日本代表の経験を持つ吉永による講演会・イベント開催。</div>
+            </div>
+          </div>
+          <div class="merit">
+            <div>
+              <div class="merit-title">大会スポンサーとしてのブランド露出</div>
+              <div class="merit-desc">Hi5Tokyo主催大会のスポンサーとして、参加者・観客へのブランド訴求。SDGs・D&amp;Iの文脈での発信も可能。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fi d2">
+        <h3 style="font-size:1rem; font-weight:900; color:var(--text); margin-bottom:1.1rem;">パートナーシップの形</h3>
+        <div class="partner-type-grid">
+          <div class="ptype-card">
+            <div class="ptype-label">Partner Type 01</div>
+            <div class="ptype-title">道具提供パートナー</div>
+            <div class="ptype-desc">ユニフォーム・ボール・練習用具・施設など、現物でのご支援。チームの競技環境向上に直接貢献できます。</div>
+          </div>
+          <div class="ptype-card gold-top">
+            <div class="ptype-label">Partner Type 02</div>
+            <div class="ptype-title">資金援助パートナー</div>
+            <div class="ptype-desc">チームの遠征費・大会参加費・運営費など、資金面でのご支援。活動規模の拡大と競技力向上を後押しします。</div>
+          </div>
+        </div>
+        <div style="background:var(--pink-bg); border:1px solid var(--pink-bdr); border-radius:10px; padding:1.25rem; font-size:0.84rem; color:var(--text-2); line-height:1.8; margin-top:0.25rem;">
+          ご予算・目的・規模に合わせたカスタムプランをご提案いたします。まずはお気軽にご相談ください。
+        </div>
+      </div>
+    </div>
+
+    <div class="partner-cta fi">
+      <a href="#contact" class="btn btn-gold">パートナーについて問い合わせる</a>
+      <p>まずはお気軽にご相談ください。ご要望に応じた最適なプランをご提案します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== VISION BAND ======== -->
+<div class="vision-band">
+  <div class="container">
+    <div class="vb-quote fi">
+      誰もが本気で挑戦し、<br>輝ける場所を作る。
+    </div>
+    <div class="vb-btns fi d2">
+      <a href="#contact"  class="btn btn-white">お問い合わせはこちら</a>
+      <a href="#practice" class="btn btn-outline-white">練習に参加する</a>
+    </div>
+  </div>
+</div>
+
+<!-- ======== CONTACT ======== -->
+<section id="contact" class="bg-alt">
+  <div class="container">
+    <div class="sec-header fi">
+      <span class="label">Contact</span>
+      <h2 class="sec-title">お問い合わせ</h2>
+      <span class="bar"></span>
+    </div>
+    <div class="contact-layout">
+      <div class="fi">
+        <div class="contact-info-title">お気軽にご連絡ください</div>
+        <div class="contact-info-body">練習参加・パートナー提携・ウェルネスプログラム・取材など、どんなご相談でもお待ちしています。通常2営業日以内にご返信いたします。</div>
+        <div class="clinks">
+          <a href="mailto:hi5tokyo.bb5@gmail.com" class="clink">
+            hi5tokyo.bb5@gmail.com
+          </a>
+          <a href="https://www.instagram.com/hi5tokyo" target="_blank" rel="noopener" class="clink">
+            @hi5tokyo（Instagram DM）
+          </a>
+        </div>
+      </div>
+
+      <form class="cform fi d2" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="fg">
+            <label class="flabel" for="f-name">お名前 *</label>
+            <input class="finput" type="text" id="f-name" placeholder="吉永 健太朗" required>
+          </div>
+          <div class="fg">
+            <label class="flabel" for="f-company">会社名・チーム名</label>
+            <input class="finput" type="text" id="f-company" placeholder="株式会社〇〇">
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flabel" for="f-email">メールアドレス *</label>
+          <input class="finput" type="email" id="f-email" placeholder="hello@example.com" required>
+        </div>
+        <div class="fg">
+          <label class="flabel" for="f-type">お問い合わせの種類 *</label>
+          <select class="fsel" id="f-type" required>
+            <option value="" disabled selected>選択してください</option>
+            <option>練習参加・体験について</option>
+            <option>パートナーシップについて</option>
+            <option>ウェルネスプログラムについて</option>
+            <option>大会について</option>
+            <option>取材・メディアについて</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="flabel" for="f-msg">メッセージ *</label>
+          <textarea class="ftxt" id="f-msg" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-pink" style="align-self:flex-start;">送信する</button>
+        <div class="form-success" id="fsuccess">ありがとうございます。内容を確認の上、折り返しご連絡いたします。</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Hi<span>5</span> Tokyo</div>
+      <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="#vision">ビジョン</a>
+        <a href="#founder">創設者</a>
+        <a href="#baseball5">Baseball5</a>
+        <a href="#team">チーム</a>
+        <a href="#activities">活動内容</a>
+        <a href="#practice">練習参加</a>
+        <a href="#partner">パートナー</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
+      <div class="footer-copy">&copy; 2025 Hi5 Tokyo. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* NAV */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), { passive: true });
+
+  /* MOBILE MENU */
+  document.getElementById('ham').addEventListener('click', () => document.getElementById('mmenu').classList.add('open'));
+  document.getElementById('mmenu-close').addEventListener('click', () => document.getElementById('mmenu').classList.remove('open'));
+  document.querySelectorAll('.mlink').forEach(l => l.addEventListener('click', () => document.getElementById('mmenu').classList.remove('open')));
+
+  /* FADE IN */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.10 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  /* FORM */
+  function submitForm(e) {
+    e.preventDefault();
+    e.target.querySelector('[type=submit]').style.display = 'none';
+    document.getElementById('fsuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>
