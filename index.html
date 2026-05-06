@@ -224,7 +224,7 @@
 
     /* Vision/Mission cards */
     .hero-vm {
-      display: flex; gap: 1rem; flex-wrap: wrap;
+      display: flex; gap: 1rem; flex-wrap: nowrap;
       margin-bottom: 2.5rem;
     }
     .hero-vm-card {
@@ -251,7 +251,7 @@
     .hero-inner {
       position: relative; z-index: 1;
       padding: 6rem 0 4rem;
-      max-width: 620px;
+      max-width: 780px;
       margin-left: auto;
     }
 
@@ -276,12 +276,13 @@
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.6)} }
 
     .hero-title {
-      font-size: clamp(2rem, 4.8vw, 4.2rem);
+      font-size: clamp(2rem, 3.6vw, 3.2rem);
       font-weight: 900;
       line-height: 1.1;
       color: #fff;
       margin-bottom: 1rem;
       text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+      white-space: nowrap;
     }
     .hero-en {
       display: block;
