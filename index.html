@@ -499,35 +499,44 @@
     ======================================== */
     #team {}
 
-    /* 写真グリッド — 実写真差し替え時は .tphoto[data-label] の background-image へ */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 1rem;
+    /* 写真マーキー — 実写真差し替え時は .tphoto-slide の background-image を設定 */
+    .photo-marquee-wrap {
+      overflow: hidden;
       margin-bottom: 2.5rem;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
     }
-    .tphoto {
+    .photo-track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      animation: marquee-left 35s linear infinite;
+    }
+    .photo-track:hover { animation-play-state: paused; }
+    @keyframes marquee-left {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .tphoto-slide {
+      width: 280px;
+      height: 200px;
       border-radius: var(--radius);
       overflow: hidden;
       position: relative;
       background: linear-gradient(135deg, var(--pink-bg2), var(--pink-bg));
       border: 1px solid var(--border);
-      /* 実写真: background-image: url('images/team1.jpg'); background-size: cover; background-position: center; */
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+      /* 実写真: background-image: url('images/team1.jpg'); */
     }
-    .tphoto::after {
+    .tphoto-slide::after {
       content: attr(data-label);
       position: absolute; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(224,80,138,0.5));
+      background: linear-gradient(transparent, rgba(224,80,138,0.55));
       color: #fff; font-size: 0.76rem; font-weight: 700;
-      padding: 1rem 0.75rem 0.5rem;
+      padding: 1.5rem 0.75rem 0.5rem;
     }
-    .tphoto.tall { grid-row: span 2; }
-    .tphoto-inner {
-      width: 100%; padding-bottom: 75%;
-      /* tall用: .tall .tphoto-inner { padding-bottom: 0; height: 100%; } */
-    }
-    .tphoto.tall .tphoto-inner { padding-bottom: 0; min-height: 300px; }
     .tphoto-placeholder {
       position: absolute; inset: 0;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -807,8 +816,6 @@
 
       .b5-grid { grid-template-columns: 1fr 1fr; }
 
-      .photo-grid { grid-template-columns: 1fr 1fr; }
-      .tphoto.tall { grid-row: auto; }
 
       .act-grid { grid-template-columns: repeat(2, 1fr); }
       .partner-lead { grid-template-columns: 1fr; }
@@ -850,7 +857,7 @@
       /* グリッド */
       .b5-grid            { grid-template-columns: 1fr; }
       .vision-cards       { grid-template-columns: 1fr; }
-      .photo-grid         { grid-template-columns: 1fr; }
+
       .act-grid           { grid-template-columns: 1fr; }
       .partner-type-grid  { grid-template-columns: 1fr; }
       .rep-grid           { grid-template-columns: 1fr; }
@@ -1046,28 +1053,31 @@
       <p class="sec-lead">甲子園優勝投手からボディビルダーまで。多様なバックグラウンドを持つメンバーが、同じフィールドで本気で挑戦する。</p>
     </div>
 
-    <!-- 写真グリッド: 実写真はtphotoのstyleにbackground-imageを追加して差し替え -->
-    <div class="photo-grid fi">
-      <div class="tphoto tall" data-label="練習風景">
-        <div class="tphoto-inner"></div>
-        <div class="tphoto-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          写真をここに掲載
-        </div>
-      </div>
-      <div class="tphoto" data-label="試合の様子">
-        <div class="tphoto-inner"></div>
-        <div class="tphoto-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          写真をここに掲載
-        </div>
-      </div>
-      <div class="tphoto" data-label="チーム全体">
-        <div class="tphoto-inner"></div>
-        <div class="tphoto-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
-          写真をここに掲載
-        </div>
+    <!-- 写真マーキー: 各 .tphoto-slide の style に background-image:url('images/teamX.jpg') を追加して差し替え -->
+    <div class="photo-marquee-wrap fi">
+      <div class="photo-track">
+        <!-- 1セット目 (10枚) -->
+        <div class="tphoto-slide" data-label="練習風景"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="試合の様子"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="チーム全体"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="大会にて"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="作戦タイム"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="トレーニング"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="試合後"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="ウォームアップ"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="集合写真"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="イベント"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <!-- 2セット目（シームレスループ用） -->
+        <div class="tphoto-slide" data-label="練習風景"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="試合の様子"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="チーム全体"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="大会にて"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="作戦タイム"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="トレーニング"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="試合後"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="ウォームアップ"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="集合写真"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
+        <div class="tphoto-slide" data-label="イベント"><div class="tphoto-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>写真</div></div>
       </div>
     </div>
 
