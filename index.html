@@ -276,7 +276,7 @@
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.6)} }
 
     .hero-title {
-      font-size: clamp(2rem, 3.6vw, 3.2rem);
+      font-size: clamp(2rem, 4.8vw, 4.8rem);
       font-weight: 900;
       line-height: 1.1;
       color: #fff;
@@ -287,20 +287,20 @@
     .hero-en {
       display: block;
       font-family: 'Oswald', sans-serif;
-      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      font-size: clamp(1.4rem, 3.8vw, 3rem);
       color: var(--pink-lt);
       letter-spacing: 0.08em;
       margin-bottom: 0.3rem;
     }
     .hero-team {
-      font-size: 0.88rem;
+      font-size: clamp(0.88rem, 1.4vw, 1.1rem);
       color: rgba(255,255,255,0.65);
       letter-spacing: 0.12em;
       margin-bottom: 1.75rem;
       font-weight: 500;
     }
     .hero-sub {
-      font-size: clamp(1.1rem, 2.8vw, 1.75rem);
+      font-size: clamp(1.1rem, 2.8vw, 2rem);
       font-weight: 700;
       color: rgba(255,255,255,0.9);
       margin-bottom: 1.5rem;
@@ -832,17 +832,20 @@
 
       /* ヒーロー — 中央寄せ・折り返し */
       .hero-inner {
-        padding: 5rem 0 3rem !important;
+        padding: 5rem 0 2rem !important;
         max-width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
         text-align: center;
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: calc(100vh - 60px) !important;
       }
       .hero-title { font-size: clamp(1.45rem, 6.5vw, 2rem) !important; white-space: nowrap; }
       .hero-en    { font-size: clamp(1.1rem, 5.5vw, 1.5rem) !important; }
       .hero-sub   { font-size: clamp(1rem, 4.5vw, 1.3rem); }
       .hero-team  { margin-bottom: 1.25rem; }
-      .hero-vm { flex-direction: column; }
+      .hero-vm { flex-direction: column; margin-top: auto !important; }
       .hero-vm-card { min-width: unset !important; width: 100%; text-align: left; }
       .hero-btns { flex-direction: column; align-items: center; }
       .hero-btns .btn { width: 100%; justify-content: center; }
