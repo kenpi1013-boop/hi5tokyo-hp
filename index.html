@@ -824,13 +824,14 @@
       .container, .container-wide { padding: 0 1.25rem; }
       section { padding: 3rem 0; }
 
-      /* ヒーロー写真：左側センター・全体カバー */
+      /* ヒーロー写真：中央を見せる */
       .hero-photo {
         background-size: cover;
-        background-position: 10% 25%;
+        background-position: center 40%;
       }
 
-      /* ヒーロー — 中央寄せ・折り返し */
+      /* ヒーロー — 縦全体に伸ばして下部にVM配置 */
+      #hero { align-items: stretch; }
       .hero-inner {
         padding: 5rem 0 2rem !important;
         max-width: 100% !important;
@@ -839,13 +840,13 @@
         text-align: center;
         display: flex !important;
         flex-direction: column !important;
-        min-height: calc(100vh - 60px) !important;
+        flex: 1 !important;
       }
       .hero-title { font-size: clamp(1.45rem, 6.5vw, 2rem) !important; white-space: nowrap; }
       .hero-en    { font-size: clamp(1.1rem, 5.5vw, 1.5rem) !important; }
       .hero-sub   { font-size: clamp(1rem, 4.5vw, 1.3rem); }
-      .hero-team  { margin-bottom: 1.25rem; }
-      .hero-vm { flex-direction: column; margin-top: auto !important; }
+      .hero-team  { margin-bottom: 0; }
+      .hero-vm { flex-direction: column; margin-top: auto !important; margin-bottom: 0.75rem; }
       .hero-vm-card { min-width: unset !important; width: 100%; text-align: left; }
       .hero-btns { flex-direction: column; align-items: center; }
       .hero-btns .btn { width: 100%; justify-content: center; }
