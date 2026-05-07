@@ -181,13 +181,18 @@
 
     /* Mobile menu */
     .mmenu {
-      display: none; position: fixed; inset: 0; background: #fff;
-      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2.25rem;
+      display: flex; position: fixed; top: 0; right: 0; bottom: 0;
+      width: 55%; background: #fff;
+      z-index: 999; flex-direction: column; align-items: flex-start; justify-content: center;
+      gap: 1.75rem; padding: 2rem 1.75rem;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
     }
-    .mmenu.open { display: flex; }
-    .mmenu a { font-size: 1.3rem; font-weight: 700; color: var(--text); transition: color 0.2s; }
+    .mmenu.open { transform: translateX(0); }
+    .mmenu a { font-size: 1.15rem; font-weight: 700; color: var(--text); transition: color 0.2s; }
     .mmenu a:hover { color: var(--pink); }
-    .mmenu-close { position: absolute; top: 1.25rem; right: 1.5rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
+    .mmenu-close { position: absolute; top: 1.25rem; right: 1.25rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
 
     /* ========================================
        SCROLL FADE
