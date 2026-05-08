@@ -1326,24 +1326,24 @@
         </div>
       </div>
 
-      <form class="cform fi d2" onsubmit="submitForm(event)">
+      <form class="cform fi d2" action="https://formspree.io/f/xqendybn" method="POST" onsubmit="submitForm(event)">
         <div class="form-row">
           <div class="fg">
             <label class="flabel" for="f-name">お名前 *</label>
-            <input class="finput" type="text" id="f-name" placeholder="吉永 健太朗" required>
+            <input class="finput" type="text" id="f-name" name="お名前" placeholder="吉永 健太朗" required>
           </div>
           <div class="fg">
             <label class="flabel" for="f-company">会社名・チーム名</label>
-            <input class="finput" type="text" id="f-company" placeholder="株式会社〇〇">
+            <input class="finput" type="text" id="f-company" name="会社名・チーム名" placeholder="株式会社〇〇">
           </div>
         </div>
         <div class="fg">
           <label class="flabel" for="f-email">メールアドレス *</label>
-          <input class="finput" type="email" id="f-email" placeholder="hello@example.com" required>
+          <input class="finput" type="email" id="f-email" name="email" placeholder="hello@example.com" required>
         </div>
         <div class="fg">
           <label class="flabel" for="f-type">お問い合わせの種類 *</label>
-          <select class="fsel" id="f-type" required>
+          <select class="fsel" id="f-type" name="お問い合わせの種類" required>
             <option value="" disabled selected>選択してください</option>
             <option>練習参加・体験について</option>
             <option>パートナーシップについて</option>
@@ -1355,7 +1355,7 @@
         </div>
         <div class="fg">
           <label class="flabel" for="f-msg">メッセージ *</label>
-          <textarea class="ftxt" id="f-msg" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+          <textarea class="ftxt" id="f-msg" name="メッセージ" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
         </div>
         <button type="submit" class="btn btn-pink" style="align-self:flex-start;">送信する</button>
         <div class="form-success" id="fsuccess">ありがとうございます。内容を確認の上、折り返しご連絡いたします。</div>
@@ -1402,8 +1402,29 @@
   /* FORM */
   function submitForm(e) {
     e.preventDefault();
-    e.target.querySelector('[type=submit]').style.display = 'none';
-    document.getElementById('fsuccess').style.display = 'block';
+    const form = e.target;
+    const btn = form.querySelector('[type=submit]');
+    btn.disabled = true;
+    btn.textContent = '送信中…';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) {
+        btn.style.display = 'none';
+        document.getElementById('fsuccess').style.display = 'block';
+        form.reset();
+      } else {
+        btn.disabled = false;
+        btn.textContent = '送信する';
+        alert('送信に失敗しました。時間をおいて再度お試しください。');
+      }
+    }).catch(() => {
+      btn.disabled = false;
+      btn.textContent = '送信する';
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+    });
   }
 </script>
 </body>
