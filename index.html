@@ -157,7 +157,9 @@
       color: var(--text);
     }
     .logo span { color: var(--pink); }
+    .logo-text-img { height: 32px; width: auto; display: inline-block; vertical-align: middle; }
     .logo-img { height: 52px; width: auto; display: inline-block; vertical-align: middle; margin-left: 0.4rem; }
+    .hero-logo-text { height: clamp(2.5rem, 6vw, 4.5rem); width: auto; display: block; margin-bottom: 0.5rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
 
     .nav-links {
       display: flex;
@@ -884,7 +886,7 @@
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="#hero" class="logo">Hi<span>5</span>Tokyo<img src="images/logo.png" alt="Hi5Tokyo ロゴ" class="logo-img"></a>
+      <a href="#hero" class="logo"><img src="images/logo-text.png" alt="Hi5Tokyo" class="logo-text-img"><img src="images/logo.png" alt="Hi5Tokyo ロゴ" class="logo-img"></a>
       <ul class="nav-links">
         <li><a href="#founder">創設者</a></li>
         <li><a href="#baseball5">Baseball5</a></li>
@@ -923,7 +925,7 @@
   <div class="container">
     <div class="hero-inner">
       <h1 class="hero-title">
-        <span class="hero-en">Hi5Tokyo</span>
+        <img src="images/logo-text.png" alt="Hi5Tokyo" class="hero-logo-text">
         ハイタッチで明るく楽しく
       </h1>
       <p class="hero-sub">「Hi5の輪をつなぐ」</p>
